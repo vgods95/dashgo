@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
-    "@chakra-ui/react": "^2.1.2",
+    "@chakra-ui/react": "1.4.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "framer-motion": "^6.3.4",
     "next": "12.1.6",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
