@@ -5,6 +5,7 @@ import { theme } from '../src/styles/theme';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { queryClient } from '../services/queryClient';
+import { AuthProvider } from '../src/contexts/AuthContext';
 
 if (process.env.NODE_ENV === 'development') {
   makeServer();
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 function MyApp({ Component, pageProps }) {
   return (
+    <AuthProvider>
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <SidebarDrawerProvider>
@@ -22,6 +24,7 @@ function MyApp({ Component, pageProps }) {
 
       <ReactQueryDevtools />
     </QueryClientProvider>
+    </AuthProvider>
   )
 }
 
