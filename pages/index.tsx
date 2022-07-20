@@ -5,7 +5,9 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthContext } from '../src/contexts/AuthContext';
 import { useContext } from 'react'
-
+import { parseCookies } from 'nookies';
+import { GetServerSideProps } from 'next/types'
+import { withSSRGuest } from '../utils/withSSRGuest'
 
 type SignInFormData = {
   email: string;
@@ -18,7 +20,6 @@ const signInFormSchema = yup.object({
 })
 
 export default function SignIn() {
-
   const { signIn } = useContext(AuthContext)
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema)
@@ -43,3 +44,9 @@ export default function SignIn() {
     </Flex>
   )
 }
+
+export const getServerSideProps = withSSRGuest(async (ctx) => {
+  return {
+    props: {}
+  }
+});

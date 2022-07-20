@@ -10,6 +10,7 @@ import { useMutation } from 'react-query'
 import { api } from "../../services/api";
 import { queryClient } from "../../services/queryClient";
 import { useRouter } from "next/router";
+import { withSSRAuth } from "../../utils/withSSRAuth";
 
 type CreateUserFormData = {
     name: string;
@@ -90,3 +91,9 @@ export default function CreateUser() {
         </Box>
     );
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+    return {
+      props: {}
+    }
+  });

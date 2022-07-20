@@ -1,8 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import { apiAuth, signOut } from '../../services/apiAuth';
 import Router from 'next/router';
 import { setCookie, parseCookies, destroyCookie } from 'nookies';
-
+import {apiAuth } from '../../services/apiClient';
 
 
 type SignInCredentials = {
@@ -27,6 +26,13 @@ type User = {
 }
 
 export const AuthContext = createContext({} as AuthContextData)
+
+export function signOut() {
+    destroyCookie(undefined, 'dashgo.token')
+    destroyCookie(undefined, 'dashgo.refreshToken')
+
+    Router.push('/');
+}
 
 export function AuthProvider({ children }: AuthProviderProps) {
     const [user, setUser] = useState<User>(null);

@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { ApexOptions } from 'apexcharts';
 import { useContext } from 'react';
 import { AuthContext } from '../src/contexts/AuthContext';
+import { withSSRAuth } from "../utils/withSSRAuth";
 
 const Chart = dynamic(() => import('react-apexcharts'), {
     ssr: false,
@@ -90,3 +91,9 @@ export default function Dashboard() {
         </Flex>
     )
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+    return {
+      props: {}
+    }
+  });
